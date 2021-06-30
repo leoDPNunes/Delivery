@@ -3,6 +3,7 @@ defmodule Delivery.Users.Create do
 
   def call(%{"zipcode" => zipcode} = params) do
     changeset = User.changeset(params)
+
     with {:ok, %User{}} <- User.build(changeset),
          {:ok, _zipcode_info} <- client().get_zipcode_info(zipcode),
          {:ok, %User{}} = user <- Repo.insert(changeset) do

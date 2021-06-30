@@ -1,8 +1,8 @@
 defmodule Delivery.UserTest do
   use Delivery.DataCase, async: true
 
-  alias Ecto.Changeset
   alias Delivery.User
+  alias Ecto.Changeset
 
   import Delivery.Factory
 

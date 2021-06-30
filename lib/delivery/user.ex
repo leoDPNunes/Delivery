@@ -2,8 +2,8 @@ defmodule Delivery.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Ecto.Changeset
   alias Delivery.Order
+  alias Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
@@ -11,7 +11,7 @@ defmodule Delivery.User do
 
   @update_params [:age, :address, :zipcode, :cpf, :email, :name]
 
-  @derive {Jason.Encoder, only: [:id, :name, :email, :age, :cpf, :address]}
+  @derive {Jason.Encoder, only: [:id, :name, :email, :age, :cpf, :address, :zipcode]}
 
   schema "users" do
     field :age, :integer
@@ -34,7 +34,7 @@ defmodule Delivery.User do
     fields = @required_params
 
     %__MODULE__{}
-    |> changes(params, @required_params = fields)
+    |> changes(params, fields)
   end
 
   def changeset(changeset \\ %__MODULE__{}, params) do

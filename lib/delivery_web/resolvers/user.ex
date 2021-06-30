@@ -1,5 +1,4 @@
 defmodule DeliveryWeb.Resolvers.User do
-
   alias Delivery.Users
 
   def create(%{input: params}, _contex), do: Users.Create.call(params)
