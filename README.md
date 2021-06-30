@@ -173,7 +173,7 @@ login yet.
 
 ## The Report
 
-The reports are scheduled to run each hour from the moment the application starts. I did this to not generate reports every time on the deployed version of the application. However, you can alter the frequency of reports locally by changing the @time variable value. Time is measured in milliseconds.
+The reports are scheduled to run each hour from the moment the application starts. I did this to not generate reports every time on the deployed version of the application. However, you can alter the frequency of reports locally by changing the @time variable value in the file report_runner.ex at Delivery.Orders.ReportRunner. Time is measured in milliseconds.
 
 ## Learn more
 
