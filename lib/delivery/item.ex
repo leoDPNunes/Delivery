@@ -9,8 +9,6 @@ defmodule Delivery.Item do
 
   @required_params [:category, :description, :price, :photo]
 
-  @update_params [:category, :description, :price, :photo]
-
   @items_categories [:food, :drink, :dessert]
 
   @derive {Jason.Encoder, only: @required_params ++ [:id]}
@@ -26,24 +24,10 @@ defmodule Delivery.Item do
     timestamps()
   end
 
-  def changeset(params) do
-    fields = @required_params
-
-    %__MODULE__{}
-    |> changes(params, @required_params = fields)
-  end
-
   def changeset(changeset \\ %__MODULE__{}, params) do
-    fields = @update_params
-
     changeset
-    |> changes(params, fields)
-  end
-
-  defp changes(changeset, params, fields) do
-    changeset
-    |> cast(params, fields)
-    |> validate_required(fields)
+    |> cast(params, @required_params)
+    |> validate_required(@required_params)
     |> validate_length(:description, min: 6)
     |> validate_number(:price, greater_than_or_equal_to: 0)
   end

@@ -9,8 +9,6 @@ defmodule Delivery.User do
 
   @required_params [:age, :address, :zipcode, :cpf, :email, :password, :name]
 
-  @update_params [:age, :address, :zipcode, :cpf, :email, :name]
-
   @derive {Jason.Encoder, only: [:id, :name, :email, :age, :cpf, :address, :zipcode]}
 
   schema "users" do
@@ -30,24 +28,10 @@ defmodule Delivery.User do
 
   def build(changeset), do: apply_action(changeset, :create)
 
-  def changeset(params) do
-    fields = @required_params
-
-    %__MODULE__{}
-    |> changes(params, fields)
-  end
-
   def changeset(changeset \\ %__MODULE__{}, params) do
-    fields = @update_params
-
     changeset
-    |> changes(params, fields)
-  end
-
-  defp changes(changeset, params, fields) do
-    changeset
-    |> cast(params, fields)
-    |> validate_required(fields)
+    |> cast(params, @required_params)
+    |> validate_required(@required_params)
     |> validate_length(:password, min: 6)
     |> validate_length(:zipcode, is: 8)
     |> validate_length(:cpf, is: 11)
