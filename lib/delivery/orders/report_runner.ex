@@ -5,7 +5,7 @@ defmodule Delivery.Orders.ReportRunner do
 
   alias Delivery.Orders.Report
 
-  @time 1000 * 1000
+  @time 1000 * 3600
 
   @time_seconds @time / 1000
 
