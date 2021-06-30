@@ -1,14 +1,177 @@
 # Delivery
 
-To start your Phoenix server:
+Delivery is an elixir's API where you create users, items and orders. It also runs a scheduled job to generate the orders' report. 
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+## Run Locally
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Clone the project
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+```bash
+  git clone git@github.com:leoDPNunes/Delivery.git
+```
+
+Go to the project directory
+
+```bash
+  cd delivery
+```
+
+Install dependencies
+
+```bash
+  mix deps.gets
+```
+
+Create and migrate your database with 
+
+```bash
+  mix ecto.setup
+```
+
+or execute the commands
+
+  - creates the database
+```bash
+  mix ecto.create
+```
+  - run the migrations
+```bash
+  mix ecto.migrate
+```
+
+Start the server
+
+```bash
+  mix phx.server
+```
+  
+## API Reference (local / deploy)
+
+```http
+deploy
+  "baseURL": "https://radiant-leafy-sapsucker.gigalixirapp.com/"
+```
+```http
+local
+  "baseURL": "http://localhost:4000/"
+```
+
+#### Create an User
+
+```http
+  POST /api/users
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `age` | `integer` | **Required**. at least 18 or over |
+| `address` | `string` | **Required**.|
+| `zipcode` | `string` | **Required**. size: 8 |
+| `cpf` | `string` | **Required**. size: 11, unique |
+| `email` | `string` | **Required**. unique |
+| `password` | `string` | **Required**. min: 6|
+| `name` | `string` | **Required**. Your API key |
+
+#### Get an User
+
+```http
+  GET /api/users/:id
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` | **Required**. UUID, route params |
+| `token` | `string` | **Required**. bearer token |
+
+#### Update an User
+
+```http
+  PUT /api/users
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `age` | `integer` | **Required**. at least 18 or over |
+| `address` | `string` | **Required**.|
+| `zipcode` | `string` | **Required**. size: 8 |
+| `cpf` | `string` | **Required**. size: 11, unique |
+| `email` | `string` | **Required**. unique |
+| `password` | `string` | **Required**. min: 6|
+| `name` | `string` | **Required**. Your API key |
+| `id` | `string` | **Required**. UUID, route params |
+| `token` | `string` | **Required**. bearer token |
+
+#### Delete an User
+
+```http
+  DEL /api/users/:id
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` | **Required**. UUID, route params |
+| `token` | `string` | **Required**. bearer token |
+
+#### User Login 
+
+```http
+  POST /users/signin
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` | **Required**. UUID |
+| `password` | `string` | **Required**. min: 6|
+
+
+#### Create an Item
+
+```http
+  POST /api/items
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `category` | `enum` | **Required**. [:food, :drink, :dessert] |
+| `description` | `string` | **Required**. min: 6|
+| `price` | `decimal` | **Required**. at least zero (gift/sale) or over |
+| `photo` | `string` | **Required**. |
+| `token` | `string` | **Required**. bearer token |
+
+#### Create an Order
+
+```http
+  POST /api/orders
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `user_id` | `string` | **Required**. UUID |
+|  |  | |
+| `list o f items` | `string` | **Required**.  |
+| `item_id` | `string` | **Required**. UUID, part of the list of items|
+| `quantity` | `integer` | **Required**. part of the list of items |
+|  |  | |
+| `address` | `string` | **Required**. min: 10|
+| `comments` | `string` | **Required**. min: 6|
+| `payment_method` | `enum` | **Required**. [:money, :credit_card, :debit_card] |
+| `token` | `string` | **Required**. bearer token |
+
+![Insomnia](https://drive.google.com/file/d/1pHWEjgB74v3Qv4b-TTo9aOZ3xfnCmYsD/view?usp=sharing)
+
+#### CRUD of User GRAPHQL
+
+```http
+deploy
+  GET /graphql/api/users
+```
+
+```http
+local
+  GET /graphiql/api/users
+```
+
+
+I'm starting to learn how to implement the graphql in elixir.
+The user crud implementation is similar to the rest
+implementation but it wasn't created the authentication yet, so
+you don't need a token for now. Furthermore, it wasn't created the
+login yet.
+
 
 ## Learn more
 
@@ -17,3 +180,10 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+
+  
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
