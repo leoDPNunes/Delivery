@@ -171,6 +171,9 @@ implementation but it wasn't created the authentication yet, so
 you don't need a token for now. Furthermore, it wasn't created the
 login yet.
 
+## The Report
+
+The reports are scheduled to run each hour from the moment the application starts. I did this to not generate reports every time on the deployed version of the application. However, you can alter the frequency of reports locally by changing the @time variable value. Time is measured in milliseconds.
 
 ## Learn more
 
