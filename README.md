@@ -69,7 +69,7 @@ local
 | `cpf` | `string` | **Required**. size: 11, unique |
 | `email` | `string` | **Required**. unique |
 | `password` | `string` | **Required**. min: 6|
-| `name` | `string` | **Required**. Your API key |
+| `name` | `string` | **Required**.|
 
 #### Get an User
 
@@ -94,7 +94,7 @@ local
 | `cpf` | `string` | **Required**. size: 11, unique |
 | `email` | `string` | **Required**. unique |
 | `password` | `string` | **Required**. min: 6|
-| `name` | `string` | **Required**. Your API key |
+| `name` | `string` | **Required**. |
 | `id` | `string` | **Required**. UUID, route params |
 | `token` | `string` | **Required**. bearer token |
 
@@ -151,7 +151,7 @@ local
 | `payment_method` | `enum` | **Required**. [:money, :credit_card, :debit_card] |
 | `token` | `string` | **Required**. bearer token |
 
-![Insomnia](https://drive.google.com/file/d/1pHWEjgB74v3Qv4b-TTo9aOZ3xfnCmYsD/view?usp=sharing)
+<img src="/asset/orders.png" alt="Insomnia Create Orders Example"/>
 
 #### CRUD of User GRAPHQL
 
