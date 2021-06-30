@@ -19,7 +19,7 @@ user = %User{
   address: "1321 Whaley Street",
   zipcode: "29208678",
   cpf: "12345678901",
-  email: 'leonardoteste@teste.com',
+  email: "leonardoteste@teste.com",
   password: "123456",
   name: "leonardo"
 }
