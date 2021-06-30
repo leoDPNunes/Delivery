@@ -1,5 +1,9 @@
 # Delivery
 
+![img](https://elixir-lang.org/images/logo/logo.png)
+
+
+
 Delivery is an elixir's API where you create users, items and orders. It also runs a scheduled job to generate the orders' report. 
 
 ## Run Locally
@@ -84,7 +88,7 @@ local
 #### Update an User
 
 ```http
-  PUT /api/users
+  PUT /api/users/:id
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
