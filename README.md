@@ -160,13 +160,8 @@ local
 #### CRUD of User GRAPHQL
 
 ```http
-deploy
-  GET /graphql/api/users
-```
-
-```http
 local
-  GET /graphiql/api/users
+  GET /graphiql
 ```
 
 
