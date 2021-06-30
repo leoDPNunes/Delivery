@@ -23,5 +23,5 @@ defmodule DeliveryWeb.Auth.Guardian do
     end
   end
 
-  def authenticate(), do: {:error, Error.build(:bad_request, "Invalid or missing params")}
+  def authenticate(_), do: {:error, Error.build(:bad_request, "Invalid or missing params")}
 end
